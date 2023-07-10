@@ -14,8 +14,6 @@ public class Platform {
 
     @Override
     public String toString() {
-        return "Platform{" +
-                "platformName='" + platformName + '\'' +
-                '}';
+        return "Platform Name='" + platformName;
     }
 }

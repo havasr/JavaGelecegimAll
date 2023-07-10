@@ -84,14 +84,13 @@ public class Film {
 
     @Override
     public String toString() {
-        return "Film{" +
-                "Name= " + name + "\n" +
+        return "Name= " + name + "\n" +
                 "Year = " + year + "\n" +
                 "Director = '" + director + "\n" +
                 "Imdb Rating= " + imdb + "\n" +
                 "Category = " + categoryArrayList + "\n" +
                 "Screening Time = '" + screenTime + "\n" +
-                "Platform = " + platformArrayList +
-                '}';
+                "Platform = " + platformArrayList + "\n" +
+                "--------------------------------------------";
     }
 }

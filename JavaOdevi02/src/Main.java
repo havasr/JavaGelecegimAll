@@ -27,17 +27,15 @@ public class Main {
             Scanner input = new Scanner(System.in);
             user = input.next();
 
+
             switch (user) {
                 case "A":
-                    System.out.println("Welcome Admin!");
-                    System.out.println("Please choose to Enter: 1-Category 2-Platform 3-Film");
+                    System.out.println("Please choose a number to Enter: 1-Category 2-Platform 3-Film");
                     entry = input.nextInt();
                     input.nextLine();
 
                     switch (entry) {
                         case 1:
-
-                            System.out.println("Please enter the following information.");
 
                             System.out.println("Name of the Category:");
                             String newCategoryName = input.nextLine();
@@ -98,7 +96,7 @@ public class Main {
                                 int catNum = input.nextInt();
                                 input.nextLine();
                                 filmCategories.add(categoryList.get(catNum - 1));
-
+                                categoryList.get(catNum - 1).incrementFilmCount();
                             }
 
 
@@ -121,7 +119,10 @@ public class Main {
 
                             Film newFilm = new Film(name, year, director, imdb, screeningsList, categoryList, platformList);
                             FilmList.add(newFilm);
-
+                            break;
+                        default:
+                            System.out.println("Wrong input please re-enter.");
+                            break;
 
                     }
 
@@ -144,6 +145,7 @@ public class Main {
                             }
                         }
                     }
+
 
                     break;
                 case "X":
