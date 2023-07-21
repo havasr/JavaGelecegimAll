@@ -1,4 +1,5 @@
 package main;
+
 import util.Grade;
 
 public class CourseGrade {
@@ -14,6 +15,7 @@ public class CourseGrade {
         setCourseCredit(courseCredit);
         setGradeTaken(gradeTaken);
     }
+
     public CourseGrade(String courseDepartment, int courseCode, int courseCredit) {
         this(courseDepartment, courseCode, courseCredit, Grade.F);
     }
@@ -73,20 +75,22 @@ public class CourseGrade {
     }
 
     public void setGradeTaken(double val) {
-        if (val <= 0.4) {
+        double roundedNum = Math.round(val);
+        if (roundedNum == 0) {
             this.gradeTaken = Grade.F;
-        } else if (val >= 0.5 && val <= 1.4) {
+        } else if (roundedNum == 1) {
             this.gradeTaken = Grade.D;
-        } else if (val >= 1.5 && val <= 2.4) {
+        } else if (roundedNum == 2) {
             this.gradeTaken = Grade.C;
-        } else if (val >= 2.5 && val <= 3.4) {
+        } else if (roundedNum == 3) {
             this.gradeTaken = Grade.B;
-        } else if (val >= 3.5 && val <= 4) {
+        } else if (roundedNum == 4) {
             this.gradeTaken = Grade.A;
         } else {
             System.out.println("Wrong input, default value is set.");
             this.gradeTaken = Grade.F;
         }
+
     }
 
     public void setGradeTaken(Grade gradeTaken) {
@@ -96,6 +100,6 @@ public class CourseGrade {
     @Override
     public String toString() {
         return "Department: " + courseDepartment + " CourseCode: " + courseCode +
-                " Credit: " + courseCredit + " Grade: " + gradeTaken;
+                " Credit: " + courseCredit + " Grade: " + gradeTaken + "\n";
     }
 }

@@ -1,5 +1,7 @@
 package main;
 
+import util.Grade;
+
 import java.util.ArrayList;
 
 public class Transcript {
@@ -34,30 +36,34 @@ public class Transcript {
     }
 
     public void setGPA(double GPA) {
-
         for (CourseGrade courseGrade : this.courseGradeList) {
-            int sum += ;
-        }
-
-        } else {
-            System.out.println("Wrong input.");
+            Grade grade = courseGrade.getGradeTaken();
+            int gradeNumber = grade.getNumberGrade();
+            int sum = +gradeNumber;
+            this.GPA = sum / this.courseGradeList.size();
         }
     }
-
 
     public void addCourseTaken(CourseGrade courseGrade) {
         if (courseGrade != null) {
             if (this.getCourseGradeList() != null) {
-                this.getCourseGradeList().add(courseGrade);
+                getCourseGradeList().add(courseGrade);
+               setGPA(0.0);
             } else {
                 ArrayList<CourseGrade> newCourseGradeList = new ArrayList<>();
                 newCourseGradeList.add(courseGrade);
                 this.setCourseGradeList(newCourseGradeList);
+                setGPA(0.0);
             }
         } else {
             System.out.println("The grade you entered is invalid.");
         }
     }
 
-
+    @Override
+    public String toString() {
+        return "Student ID: " +studentID + "\n" +
+                courseGradeList + "\nGPA: " + GPA
+                ;
+    }
 }
