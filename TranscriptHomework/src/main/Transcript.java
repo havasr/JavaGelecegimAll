@@ -10,9 +10,9 @@ public class Transcript {
     private double GPA;
 
     public Transcript(int studentID) {
-        setStudentID(studentID);
-        setGPA(0.0);
-        setCourseGradeList(new ArrayList<CourseGrade>());
+        this.studentID =studentID;
+        this.courseGradeList = new ArrayList<CourseGrade>();
+        this.GPA = 0.0;
     }
 
     public int getStudentID() {

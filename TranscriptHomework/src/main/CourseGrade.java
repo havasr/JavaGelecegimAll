@@ -16,6 +16,13 @@ public class CourseGrade {
         setGradeTaken(gradeTaken);
     }
 
+    public CourseGrade(String courseDepartment, int courseCode, int courseCredit, double gradeTaken) {
+        setCourseDepartment(courseDepartment);
+        setCourseCode(courseCode);
+        setCourseCredit(courseCredit);
+        setGradeTaken(gradeTaken);
+    }
+
     public CourseGrade(String courseDepartment, int courseCode, int courseCredit) {
         this(courseDepartment, courseCode, courseCredit, Grade.F);
     }
@@ -28,7 +35,7 @@ public class CourseGrade {
         this(courseDepartment, 100, 4, Grade.F);
     }
 
-    //Bos constructor olusturulacak mi?
+
 
     public String getCourseDepartment() {
         return courseDepartment;
@@ -39,7 +46,7 @@ public class CourseGrade {
                 courseDepartment.equals("ME") || courseDepartment.equals("MATH")) {
             this.courseDepartment = courseDepartment;
         } else {
-            System.out.println("Wrong input, default value is set.");
+            System.out.println("Wrong input for course department, default value is set.");
             this.courseDepartment = "CHENG";
         }
     }
@@ -52,7 +59,7 @@ public class CourseGrade {
         if (courseCode > 100 && courseCode < 599) {
             this.courseCode = courseCode;
         } else {
-            System.out.println("Wrong input, default value is set.");
+            System.out.println("Wrong input for course code, default value is set.");
             this.courseCode = 100;
         }
     }
@@ -65,7 +72,7 @@ public class CourseGrade {
         if (courseCredit == 4 || courseCredit == 3) {
             this.courseCredit = courseCredit;
         } else {
-            System.out.println("Wrong input, default value is set.");
+            System.out.println("Wrong input for course credit, default value is set.");
             this.courseCredit = 4;
         }
     }
@@ -87,7 +94,7 @@ public class CourseGrade {
         } else if (roundedNum == 4) {
             this.gradeTaken = Grade.A;
         } else {
-            System.out.println("Wrong input, default value is set.");
+            System.out.println("Wrong input for grade, default value is set.");
             this.gradeTaken = Grade.F;
         }
 
