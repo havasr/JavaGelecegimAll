@@ -3,12 +3,12 @@ package hw3.main;
 import hw3.util.Grade;
 
 public class CourseGrade {
-
     private String courseDepartment;
     private int courseCode;
     private int courseCredit;
     private Grade gradeTaken;
 
+    //four overloaded constructors which fill in the missing parameters with default values
     public CourseGrade(String courseDepartment, int courseCode, int courseCredit, Grade gradeTaken) {
         setCourseDepartment(courseDepartment);
         setCourseCode(courseCode);
@@ -16,11 +16,13 @@ public class CourseGrade {
         setGradeTaken(gradeTaken);
     }
 
+    //additional constructor that takes gradeTaken as a double value instead of a Grade
     public CourseGrade(String courseDepartment, int courseCode, int courseCredit, double gradeTaken) {
         setCourseDepartment(courseDepartment);
         setCourseCode(courseCode);
         setCourseCredit(courseCredit);
         setGradeTaken(gradeTaken);
+
     }
 
     public CourseGrade(String courseDepartment, int courseCode, int courseCredit) {
@@ -44,7 +46,7 @@ public class CourseGrade {
         checkCourseDepartment(courseDepartment);
     }
 
-
+    //checks if courseDepartment is from valid values, if not sets default value
     public void checkCourseDepartment(String courseDepartment) {
         courseDepartment = courseDepartment.toUpperCase();
         if (courseDepartment.equals("CENG") || courseDepartment.equals("COMP") || courseDepartment.equals("ECE") ||
@@ -55,7 +57,6 @@ public class CourseGrade {
         }
     }
 
-
     public int getCourseCode() {
         return courseCode;
     }
@@ -64,6 +65,7 @@ public class CourseGrade {
         checkCourseCode(courseCode);
     }
 
+    //checks if courseCode is from valid values, if not sets default value
     public void checkCourseCode(int courseCode) {
         if (courseCode > 100 && courseCode < 599) {
             this.courseCode = courseCode;
@@ -80,6 +82,7 @@ public class CourseGrade {
         checkCourseCredit(courseCredit);
     }
 
+    //checks if courseCredit is from valid values, if not sets default value
     public void checkCourseCredit(int courseCredit) {
         if (courseCredit == 4 || courseCredit == 3) {
             this.courseCredit = courseCredit;
@@ -95,10 +98,12 @@ public class CourseGrade {
     public void setGradeTaken(Grade gradeTaken) {
         this.gradeTaken = gradeTaken;
     }
+
     public void setGradeTaken(double val) {
         checkGradeTaken(val);
     }
 
+    //selects the letter grade whose numeric value is closest to val, otherwise sets gradeTaken to default value
     public void checkGradeTaken(double val) {
         double roundedNum = Math.round(val);
         if (roundedNum == 0) {
@@ -117,10 +122,10 @@ public class CourseGrade {
     }
 
 
-
     @Override
     public String toString() {
+
         return "Department: " + courseDepartment + " CourseCode: " + courseCode +
-                " Credit: " + courseCredit + " Grade: " + gradeTaken.getStringValue() + "\n";
+                " Credit: " + courseCredit + " Grade: " + gradeTaken.getStringValue();
     }
 }

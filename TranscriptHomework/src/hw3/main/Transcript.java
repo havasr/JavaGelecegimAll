@@ -1,7 +1,5 @@
 package hw3.main;
-
 import hw3.util.Grade;
-
 import java.util.ArrayList;
 
 public class Transcript {
@@ -38,6 +36,8 @@ public class Transcript {
     public void setGPA() {
         calculateGPA();
     }
+
+    //adds the courseGrade to the getCourseGradeList() if not null and re-calculates the GPA
     public void addCourseTaken(CourseGrade courseGrade) {
         if (courseGrade != null) {
             getCourseGradeList().add(courseGrade);
@@ -47,6 +47,7 @@ public class Transcript {
         }
     }
 
+    //calculates the GPA as the average of the grades from all the courses taken
     public void calculateGPA() {
         double sum = 0;
         for (CourseGrade courseGrade : this.courseGradeList) {
@@ -57,17 +58,24 @@ public class Transcript {
         this.GPA = sum / this.courseGradeList.size();
     }
 
-
+    //adds a newline character to all the elements of courseGradeList except the last one
     @Override
     public String toString() {
-        String transcript = courseGradeList.toString().replace("[", "").replace("]", "");
+
+        String formattedCourseGradeList = "";
+        for (int i = 0; i < courseGradeList.size(); i++) {
+            CourseGrade courseGrade = courseGradeList.get(i);
+
+            formattedCourseGradeList += courseGrade.toString()
+                    .replace("[", "").replace("]", "").replace(",", "");
+
+            if (i < courseGradeList.size() - 1) {
+                formattedCourseGradeList += "\n";
+            }
+        }
+        String formattedGPA = String.format("%.1f", GPA);
 
         return "Student ID: " + studentID + "\n" +
-                courseGradeList + "\nGPA: " + GPA;
-
-
-
+                formattedCourseGradeList + "\nGPA: " + formattedGPA;
     }
-
-
 }
