@@ -1,6 +1,6 @@
-package main;
+package hw3.main;
 
-import util.Grade;
+import hw3.util.Grade;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,7 @@ public class Transcript {
     private double GPA;
 
     public Transcript(int studentID) {
-        this.studentID =studentID;
+        this.studentID = studentID;
         this.courseGradeList = new ArrayList<CourseGrade>();
         this.GPA = 0.0;
     }
@@ -35,35 +35,39 @@ public class Transcript {
         return GPA;
     }
 
-    public void setGPA(double GPA) {
-        for (CourseGrade courseGrade : this.courseGradeList) {
-            Grade grade = courseGrade.getGradeTaken();
-            int gradeNumber = grade.getNumberGrade();
-            int sum = +gradeNumber;
-            this.GPA = sum / this.courseGradeList.size();
-        }
+    public void setGPA() {
+        calculateGPA();
     }
-
     public void addCourseTaken(CourseGrade courseGrade) {
         if (courseGrade != null) {
-            if (this.getCourseGradeList() != null) {
-                getCourseGradeList().add(courseGrade);
-               setGPA(0.0);
-            } else {
-                ArrayList<CourseGrade> newCourseGradeList = new ArrayList<>();
-                newCourseGradeList.add(courseGrade);
-                this.setCourseGradeList(newCourseGradeList);
-                setGPA(0.0);
-            }
+            getCourseGradeList().add(courseGrade);
+            calculateGPA();
         } else {
             System.out.println("The grade you entered is invalid.");
         }
     }
 
+    public void calculateGPA() {
+        double sum = 0;
+        for (CourseGrade courseGrade : this.courseGradeList) {
+            Grade grade = courseGrade.getGradeTaken();
+            int gradeNumber = grade.getNumericValue();
+            sum += gradeNumber;
+        }
+        this.GPA = sum / this.courseGradeList.size();
+    }
+
+
     @Override
     public String toString() {
-        return "Student ID: " +studentID + "\n" +
-                courseGradeList + "\nGPA: " + GPA
-                ;
+        String transcript = courseGradeList.toString().replace("[", "").replace("]", "");
+
+        return "Student ID: " + studentID + "\n" +
+                courseGradeList + "\nGPA: " + GPA;
+
+
+
     }
+
+
 }

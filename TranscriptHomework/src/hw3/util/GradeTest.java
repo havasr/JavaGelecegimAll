@@ -1,4 +1,4 @@
-package util;
+package hw3.util;
 
 public class GradeTest {
     public static void gradeTest() {

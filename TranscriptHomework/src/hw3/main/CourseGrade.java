@@ -1,6 +1,6 @@
-package main;
+package hw3.main;
 
-import util.Grade;
+import hw3.util.Grade;
 
 public class CourseGrade {
 
@@ -36,30 +36,38 @@ public class CourseGrade {
     }
 
 
-
     public String getCourseDepartment() {
         return courseDepartment;
     }
 
     public void setCourseDepartment(String courseDepartment) {
-        if (courseDepartment.equals("CHENG") || courseDepartment.equals("COMP") || courseDepartment.equals("ECE") ||
+        checkCourseDepartment(courseDepartment);
+    }
+
+
+    public void checkCourseDepartment(String courseDepartment) {
+        courseDepartment = courseDepartment.toUpperCase();
+        if (courseDepartment.equals("CENG") || courseDepartment.equals("COMP") || courseDepartment.equals("ECE") ||
                 courseDepartment.equals("ME") || courseDepartment.equals("MATH")) {
             this.courseDepartment = courseDepartment;
         } else {
-            System.out.println("Wrong input for course department, default value is set.");
-            this.courseDepartment = "CHENG";
+            this.courseDepartment = "CENG";
         }
     }
+
 
     public int getCourseCode() {
         return courseCode;
     }
 
     public void setCourseCode(int courseCode) {
+        checkCourseCode(courseCode);
+    }
+
+    public void checkCourseCode(int courseCode) {
         if (courseCode > 100 && courseCode < 599) {
             this.courseCode = courseCode;
         } else {
-            System.out.println("Wrong input for course code, default value is set.");
             this.courseCode = 100;
         }
     }
@@ -69,10 +77,13 @@ public class CourseGrade {
     }
 
     public void setCourseCredit(int courseCredit) {
+        checkCourseCredit(courseCredit);
+    }
+
+    public void checkCourseCredit(int courseCredit) {
         if (courseCredit == 4 || courseCredit == 3) {
             this.courseCredit = courseCredit;
         } else {
-            System.out.println("Wrong input for course credit, default value is set.");
             this.courseCredit = 4;
         }
     }
@@ -81,7 +92,14 @@ public class CourseGrade {
         return gradeTaken;
     }
 
+    public void setGradeTaken(Grade gradeTaken) {
+        this.gradeTaken = gradeTaken;
+    }
     public void setGradeTaken(double val) {
+        checkGradeTaken(val);
+    }
+
+    public void checkGradeTaken(double val) {
         double roundedNum = Math.round(val);
         if (roundedNum == 0) {
             this.gradeTaken = Grade.F;
@@ -94,19 +112,15 @@ public class CourseGrade {
         } else if (roundedNum == 4) {
             this.gradeTaken = Grade.A;
         } else {
-            System.out.println("Wrong input for grade, default value is set.");
             this.gradeTaken = Grade.F;
         }
-
     }
 
-    public void setGradeTaken(Grade gradeTaken) {
-        this.gradeTaken = gradeTaken;
-    }
+
 
     @Override
     public String toString() {
         return "Department: " + courseDepartment + " CourseCode: " + courseCode +
-                " Credit: " + courseCredit + " Grade: " + gradeTaken + "\n";
+                " Credit: " + courseCredit + " Grade: " + gradeTaken.getStringValue() + "\n";
     }
 }
