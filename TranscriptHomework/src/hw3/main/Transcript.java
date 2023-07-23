@@ -63,6 +63,7 @@ public class Transcript {
     public String toString() {
 
         String formattedCourseGradeList = "";
+
         for (int i = 0; i < courseGradeList.size(); i++) {
             CourseGrade courseGrade = courseGradeList.get(i);
 
@@ -73,6 +74,7 @@ public class Transcript {
                 formattedCourseGradeList += "\n";
             }
         }
+
         String formattedGPA = String.format("%.1f", GPA);
 
         return "Student ID: " + studentID + "\n" +

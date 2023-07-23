@@ -105,20 +105,16 @@ public class CourseGrade {
 
     //selects the letter grade whose numeric value is closest to val, otherwise sets gradeTaken to default value
     public void checkGradeTaken(double val) {
-        double roundedNum = Math.round(val);
-        if (roundedNum == 0) {
-            this.gradeTaken = Grade.F;
-        } else if (roundedNum == 1) {
-            this.gradeTaken = Grade.D;
-        } else if (roundedNum == 2) {
-            this.gradeTaken = Grade.C;
-        } else if (roundedNum == 3) {
-            this.gradeTaken = Grade.B;
-        } else if (roundedNum == 4) {
-            this.gradeTaken = Grade.A;
-        } else {
-            this.gradeTaken = Grade.F;
+        if (val >= 0 && val <= 4){
+            int roundedNum = (int) Math.round(val);
+            for (Grade grade : Grade.values()){
+                if (grade.getNumericValue() == roundedNum){
+                    this.gradeTaken = grade;
+                    return;
+                }
+            }
         }
+        this.gradeTaken = Grade.F;
     }
 
 
