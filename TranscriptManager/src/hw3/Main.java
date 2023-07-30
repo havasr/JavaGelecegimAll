@@ -7,7 +7,6 @@ import hw3.util.Grade;
 
 public class Main {
     public static void main(String[] args) {
-
         /*
         CourseGrade courseGrade1 = new CourseGrade("ME", 120, 4, 3.5);
         CourseGrade courseGrade2 = new CourseGrade("ece", 20, 3, Grade.D);
@@ -21,10 +20,10 @@ public class Main {
         transcript1.addCourseTaken(courseGrade3);
 
         System.out.println(transcript1);
-*/
+        */
+
         GenerateTranscript generateTranscript = new GenerateTranscript();
-        Transcript transcript2 = generateTranscript.takeInputFromUser();
-        Transcript transcript3 =generateTranscript.takeInputFromFile();
+        Transcript transcript2 = generateTranscript.generateTranscript();
 
     }
 }
