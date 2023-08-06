@@ -3,7 +3,7 @@ package com.allianz.erp.service;
 import com.allianz.erp.database.entity.CustomerEntity;
 import com.allianz.erp.database.entity.OrderEntity;
 import com.allianz.erp.database.repository.CustomerEntityRepository;
-import com.allianz.erp.model.OrderStatusEnum;
+import com.allianz.erp.model.Enum.OrderStatusEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

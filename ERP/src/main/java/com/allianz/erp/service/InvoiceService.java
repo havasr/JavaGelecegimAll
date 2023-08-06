@@ -2,7 +2,7 @@ package com.allianz.erp.service;
 
 import com.allianz.erp.database.entity.*;
 import com.allianz.erp.database.repository.InvoiceEntityRepository;
-import com.allianz.erp.model.ProductTypeEnum;
+import com.allianz.erp.model.Enum.ProductTypeEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

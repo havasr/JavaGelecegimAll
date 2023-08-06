@@ -1,4 +1,4 @@
-package com.allianz.erp.model;
+package com.allianz.erp.model.dto;
 
 import lombok.Getter;
 import lombok.Setter;

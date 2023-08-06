@@ -2,7 +2,6 @@ package com.allianz.erp.service;
 
 import com.allianz.erp.database.entity.ProductEntity;
 import com.allianz.erp.database.repository.ProductEntityRepository;
-import com.allianz.erp.model.OrderStatusEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

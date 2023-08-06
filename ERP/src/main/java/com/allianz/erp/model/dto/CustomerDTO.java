@@ -1,4 +1,4 @@
-package com.allianz.erp.model;
+package com.allianz.erp.model.dto;
 
 import jakarta.validation.constraints.Email;
 import lombok.Getter;

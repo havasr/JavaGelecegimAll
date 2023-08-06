@@ -1,6 +1,6 @@
 package com.allianz.erp.database.entity;
 
-import com.allianz.erp.model.OrderStatusEnum;
+import com.allianz.erp.model.Enum.OrderStatusEnum;
 import com.allianz.erp.util.dbutil.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Data;

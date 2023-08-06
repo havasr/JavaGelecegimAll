@@ -1,5 +1,6 @@
-package com.allianz.erp.model;
+package com.allianz.erp.model.dto;
 
+import com.allianz.erp.model.Enum.OrderStatusEnum;
 import lombok.Getter;
 import lombok.Setter;
 
