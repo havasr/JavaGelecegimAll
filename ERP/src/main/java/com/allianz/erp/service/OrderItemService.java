@@ -17,9 +17,10 @@ public class OrderItemService {
     @Autowired
     ProductService productService;
 
+    // Create a new order item and set the price
     public OrderItemEntity createOrderItem(UUID productUuid, int quantity) {
         ProductEntity product = productService.getProductByUUID(productUuid);
-        OrderItemEntity orderItem =  new OrderItemEntity();
+        OrderItemEntity orderItem = new OrderItemEntity();
         orderItem.setProduct(product);
         orderItem.setQuantity(quantity);
         orderItem.setPriceAtOrder(product.getPrice());
@@ -29,11 +30,11 @@ public class OrderItemService {
         return orderItem;
     }
 
+    // Get an order item by its UUID
     public OrderItemEntity getOrderItemByUUID(UUID uuid) {
         Optional<OrderItemEntity> orderItemEntityOptional = orderItemEntityRepository.findByUuid(uuid);
 
         return orderItemEntityOptional.orElse(null);
     }
-
 
 }

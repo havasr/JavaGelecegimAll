@@ -12,9 +12,6 @@ import java.util.UUID;
 @Repository
 public interface OrderEntityRepository extends JpaRepository<OrderEntity, Long> {
 
-    @Modifying
-    void deleteByUuid(UUID uuid);
-
     Optional<OrderEntity> findByUuid(UUID uuid);
 
 }

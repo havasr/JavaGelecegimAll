@@ -6,11 +6,14 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table
-@AttributeOverride(name= "uuid", column = @Column(name="vat_uuid"))
-@Data
+@AttributeOverride(name = "uuid", column = @Column(name = "vat_uuid"))
+@Getter
+@Setter
 public class VATEntity extends BaseEntity {
 
     @Column
@@ -19,5 +22,5 @@ public class VATEntity extends BaseEntity {
     private int consumerProduct = 8;
     @Column
     private int luxuryItem = 18;
-
+    //As per the requirements for the project the VAT values are held in a table
 }

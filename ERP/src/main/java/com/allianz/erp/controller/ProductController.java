@@ -17,7 +17,7 @@ public class ProductController {
     ProductService productService;
 
     //Creating product
-    @PostMapping("product")
+    @PostMapping("create")
     public ResponseEntity<ProductEntity> createProduct(@RequestBody ProductEntity product) {
         ProductEntity product1 = productService.createProduct(product.getName(), product.getStock(), product.isHasVAT(),
                 product.getPrice());
@@ -25,7 +25,7 @@ public class ProductController {
     }
 
     //Delete product
-    @DeleteMapping("product/{uuid}")
+    @DeleteMapping("delete/{uuid}")
     public ResponseEntity<Boolean> deleteProduct(@PathVariable UUID uuid) {
         Boolean isDeleted = productService.deleteProductByUUID(uuid);
         if (isDeleted) {
@@ -35,7 +35,7 @@ public class ProductController {
     }
 
     //Update product
-    @PutMapping("product/{uuid}")
+    @PutMapping("update/{uuid}")
     public ResponseEntity<ProductEntity> updateProductByUUID
     (@PathVariable UUID uuid, @RequestBody ProductEntity newProductEntity) {
         ProductEntity productEntity = productService.updateProductByUUID(uuid, newProductEntity);
@@ -46,7 +46,7 @@ public class ProductController {
         }
     }
 
-    //Search customer by UUID
+    //Get product by UUID
     @GetMapping("product-uuid/{uuid}")
     public ResponseEntity<ProductEntity> getProductByUUID(@PathVariable UUID uuid) {
         ProductEntity productEntity = productService.getProductByUUID(uuid);
@@ -57,14 +57,16 @@ public class ProductController {
         }
     }
 
+    // Get product list by name that starts with the provided key
     @GetMapping("product-list-by-name-start-with/{key}")
     public ResponseEntity<List<ProductEntity>> getProductListByNameStartWith(@PathVariable String key) {
         return new ResponseEntity<>(productService.getProductNameStartWith(key), HttpStatus.OK);
     }
 
+    // Update product stock by UUID
     @PutMapping("product-stock-update/{uuid}")
-    public ResponseEntity<ProductEntity> updateStockOfProductByUUID(@PathVariable UUID uuid, @RequestBody int newStock){
-        ProductEntity productEntity = productService.updateStockOfProductByUUID(uuid, newStock);
+    public ResponseEntity<ProductEntity> updateProductStockByUUID(@PathVariable UUID uuid, @RequestBody int newStock){
+        ProductEntity productEntity = productService.updateProductStockByUUID(uuid, newStock);
         if(productEntity != null){
             return new ResponseEntity<>(productEntity, HttpStatus.OK);
         } else {
@@ -72,9 +74,10 @@ public class ProductController {
         }
     }
 
+    // Update product price by UUID
     @PutMapping("product-price-update/{uuid}")
-    public ResponseEntity<ProductEntity> updatePriceOfProductByUUID(@PathVariable UUID uuid, @RequestBody double newPrice){
-        ProductEntity productEntity = productService.updatePriceOfProductByUUID(uuid, newPrice);
+    public ResponseEntity<ProductEntity> updateProductPriceByUUID(@PathVariable UUID uuid, @RequestBody double newPrice){
+        ProductEntity productEntity = productService.updateProductPriceByUUID(uuid, newPrice);
         if(productEntity != null){
             return new ResponseEntity<>(productEntity, HttpStatus.OK);
         } else {

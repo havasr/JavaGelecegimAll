@@ -10,8 +10,5 @@ import java.util.UUID;
 
 @Repository
 public interface InvoiceEntityRepository extends JpaRepository<InvoiceEntity, Long> {
-    @Modifying
-    void deleteByUuid(UUID uuid);
-
-    Optional<InvoiceEntity> findByUuid(UUID uuid);
+       Optional<InvoiceEntity> findByUuid(UUID uuid);
 }
