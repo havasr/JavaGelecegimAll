@@ -12,8 +12,8 @@ public class ProductDTO {
     private String name;
     private int stock;
     private boolean hasVAT;
+    private ProductTypeEnum productType;
     private double price;
-    private OrderStatusEnum orderStatus;
     public ProductDTO() {
         this.uuid = UUID.randomUUID();
     }

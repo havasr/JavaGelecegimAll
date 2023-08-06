@@ -24,7 +24,6 @@ public class ProductService {
         product.setStock(stock);
         product.setHasVAT(hasVAT);
         product.setPrice(price);
-        product.setOrderStatus(OrderStatusEnum.PENDING);
 
         productEntityRepository.save(product);
 
@@ -72,6 +71,22 @@ public class ProductService {
         return productEntityRepository.findAllByNameStartingWith(key);
     }
 
+    public ProductEntity updateStockOfProductByUUID(UUID uuid, int newStock){
+        ProductEntity productEntity = getProductByUUID(uuid);
+        if (productEntity != null){
+            productEntity.setStock(newStock);
+            return productEntity;
+        }
+        return null;
+    }
 
+    public ProductEntity updatePriceOfProductByUUID(UUID uuid, double newPrice){
+        ProductEntity productEntity = getProductByUUID(uuid);
+        if (productEntity != null){
+            productEntity.setPrice(newPrice);
+            return productEntity;
+        }
+        return null;
+    }
 
 }

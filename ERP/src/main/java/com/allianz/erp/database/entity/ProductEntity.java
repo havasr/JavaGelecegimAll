@@ -1,6 +1,7 @@
 package com.allianz.erp.database.entity;
 
 import com.allianz.erp.model.OrderStatusEnum;
+import com.allianz.erp.model.ProductTypeEnum;
 import com.allianz.erp.util.dbutil.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -22,10 +23,10 @@ public class ProductEntity extends BaseEntity {
     @Column
     private boolean hasVAT;
     @Column
-    private double price;
+    private ProductTypeEnum productType;
     @Column
-    private OrderStatusEnum orderStatus;
+    private double price;
     @OneToOne(mappedBy = "product")
-    private OrderItemEntity orderitem;
+    private OrderItemEntity orderItem;
 
 }

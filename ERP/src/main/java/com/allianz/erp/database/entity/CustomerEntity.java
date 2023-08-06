@@ -25,5 +25,5 @@ public class CustomerEntity extends BaseEntity {
     @Column
     private String address;
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OrderEntity> orderItem = new ArrayList<>();
+    private List<OrderEntity> orderHistory = new ArrayList<>();
 }

@@ -62,4 +62,27 @@ public class ProductController {
         return new ResponseEntity<>(productService.getProductNameStartWith(key), HttpStatus.OK);
     }
 
+    @PutMapping("product-stock-update/{uuid}")
+    public ResponseEntity<ProductEntity> updateStockOfProductByUUID(@PathVariable UUID uuid, @RequestBody int newStock){
+        ProductEntity productEntity = productService.updateStockOfProductByUUID(uuid, newStock);
+        if(productEntity != null){
+            return new ResponseEntity<>(productEntity, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PutMapping("product-price-update/{uuid}")
+    public ResponseEntity<ProductEntity> updatePriceOfProductByUUID(@PathVariable UUID uuid, @RequestBody double newPrice){
+        ProductEntity productEntity = productService.updatePriceOfProductByUUID(uuid, newPrice);
+        if(productEntity != null){
+            return new ResponseEntity<>(productEntity, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+
+
+
 }

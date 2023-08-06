@@ -1,7 +1,9 @@
 package com.allianz.erp.service;
 
 import com.allianz.erp.database.entity.CustomerEntity;
+import com.allianz.erp.database.entity.OrderEntity;
 import com.allianz.erp.database.repository.CustomerEntityRepository;
+import com.allianz.erp.model.OrderStatusEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +17,8 @@ public class CustomerService {
 
     @Autowired
     CustomerEntityRepository customerEntityRepository;
+    @Autowired
+    OrderService orderService;
 
     public CustomerEntity createCustomer(String name, String surname, int birthYear, String email,
                                          int cardNo, String address) {
@@ -77,6 +81,22 @@ public class CustomerService {
     public List<CustomerEntity> getCustomerNameStartWithAndSurnameStartWith(String name, String surname) {
         return customerEntityRepository.findAllByNameStartingWithOrSurnameStartingWith(name, surname);
     }
+
+    public CustomerEntity placeOrderFromCustomer(UUID uuid, UUID orderUUID){
+        CustomerEntity customerEntity = getCustomerByUUID(uuid);
+        OrderEntity order = orderService.getOrderByUUID(orderUUID);
+        if (customerEntity != null) {
+            customerEntity.getOrderHistory().add(order);
+            order.setCustomer(customerEntity);
+            order.setOrderStatus(OrderStatusEnum.CREATED);
+            return customerEntity;
+        }
+        return null;
+    }
+
+
+
+
 
 
 }
